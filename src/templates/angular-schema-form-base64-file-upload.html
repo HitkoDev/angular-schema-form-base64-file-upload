@@ -3,7 +3,7 @@
     <div base64-file-upload="form" sf-field-model schema-validate="form" class="base64-file--drop-area" ng-class="{'file-hovering': dropAreaHover, 'has-file': hasFile}">
         <input type="file" class="base64-file--input" style="visibility:hidden; position:absolute; top:0; left:0;" ng-disabled="hasFile">
         <div class="base64-file--file-preview" ng-show="hasFile">
-            <img ng-show="isImage(file)" ng-src="{{file.src}}">
+            <div><img ng-show="isImage(file)" ng-src="{{file.src}}"></div>
             <div class="base64-file--file">
                 <div class="base64-file--file-name">{{file.name}}</div>
                 <div class="base64-file--file-size">{{file.humanSize}}</div>
