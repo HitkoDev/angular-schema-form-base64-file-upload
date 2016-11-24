@@ -52,14 +52,6 @@ angular.module('angularSchemaFormBase64FileUpload').directive('base64FileUpload'
             link: function (scope, element, attrs, ngModel) {
                 scope.ngModel = ngModel;
 
-                var baseName = function (str) {
-                    var base = new String(str).substring(str.lastIndexOf('/') + 1);
-                    console.log(base)
-                    if (base.lastIndexOf(".") != -1)
-                        base = base.substring(0, base.lastIndexOf("."));
-                    return base;
-                }
-
                 scope.file = undefined;
 
                 ngModel.$render = function () {
@@ -69,7 +61,7 @@ angular.module('angularSchemaFormBase64FileUpload').directive('base64FileUpload'
                             filename = '/' + filename
                         scope.file = {
                             ext: filename.split('.').slice(-1)[0],
-                            name: baseName(filename),
+                            name: filename.split('/').slice(-1)[0],
                             src: filename
                         }
                         scope.hasFile = true
@@ -186,7 +178,7 @@ angular.module('angularSchemaFormBase64FileUpload').directive('base64FileUpload'
                     e.stopPropagation();
                     scope.file = undefined;
                     scope.hasFile = false;
-                    ngModel.$setViewValue(undefined);
+                    ngModel.$setViewValue('');
                 }
 
                 element.find('input').bind('change', function (e) {
