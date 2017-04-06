@@ -15,7 +15,7 @@ angular.module('angularSchemaFormBase64FileUpload').directive('base64FileUpload'
                 scope.file = undefined;
 
                 ngModel.$render = function () {
-                    var filename = (ngModel.$viewValue || '').trim()
+                    var filename = ngModel.$viewValue || ''
                     if (filename) {
                         if (filename.search(/(http\:\/\/|https\:\/\/|\/)/ig) != 0)
                             filename = '/' + filename
